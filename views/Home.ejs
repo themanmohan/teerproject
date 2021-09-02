@@ -1,0 +1,305 @@
+<%- include("./partials/header") %>
+
+<main>
+    <section class="py-5 text-center container">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="/images/manarrow.png" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    
+                    <h5 class="card-title">Meghalaya Sunday Teer Announcement</h5>
+                    <%if(currentUser){%>
+                        <%if(currentUser.role.includes('admin')){%>
+<a class="btn btn-sm mb-2  btn-success" href="/annoucement/addnnouncement">Add your Announcement</a>
+<%}%>
+    <%}%>
+
+                    <div class="card">
+                        <%announcement.forEach((data)=>{%>
+                        <div class="card-body">
+                            <%=data.text%>
+                        </div>
+                        <%if(currentUser){%>
+                            <%if(currentUser.role.includes('admin')){%>
+                                
+           
+                                <form action="/annoucement/<%=data._id %>/delete?_method=DELETE" method="POST">
+                                    <button class="btn btn-sm  btn-warning mb-3" >Delete</button>
+                                </form>
+                                <%}%>
+                                    <%}%>
+
+                       
+
+                        <%})%>
+                    </div>
+
+                    <div class="p-4"></div>
+                    <h5><%= new Intl.DateTimeFormat('en-GB', { year: 'numeric' , month: 'long' , day: '2-digit' }).format(new Date()) %></h5>
+                  
+                    <table class="table table-bordered border border-dark">
+                        <h4>Meghalaya Morning Result</h4>
+                        <%if(currentUser){%>
+                            <%if(currentUser.role.includes('admin')){%>
+                               
+                                <a class="btn btn-sm mb-2  btn-success" href="/morningresult/addmorningresult">Add  Morning Result</a>
+                            
+                                <%}%>
+                                    <%}%>
+                                    <%if(morningresult.length>0){%>
+                   <%morningresult.forEach((data)=>{%>
+
+                  
+                        <tbody>
+                          <thead style="background-color: #99e4af;">
+      
+                            <th >First Round [<%=data.round1.time%>]</th>
+                            <th >Second Round [<%=data.round2.time%>]</th>
+                        
+                            
+                            <%if(currentUser){%>
+                                <%if(currentUser.role.includes('admin')){%>
+                            <th>Action</th>
+                <%}%>
+                    <%}%>
+      
+                        </thead>  
+                          <tr>
+                            
+                            <td><%=data.round1.result%></td>
+                            <td><%=data.round2.result%></td>
+                             <%if(currentUser){%>
+                                <%if(currentUser.role.includes('admin')){%>
+                                    <td>
+                                <form action="/morningresult/<%=data._id %>/delete?_method=DELETE" method="POST">
+                                    <button class="btn btn-sm  btn-dark text-center bg-white text-dark mb-3" class="">Delete
+                                    </button>
+                                </form>
+                            </td>
+                            <%}%>
+                                <%}%>
+                            
+                          </tr>
+                         
+      
+                        </tbody>
+                    <%})%>
+                    <%}else{%>
+                        <tbody>
+                            <thead style="background-color: #99e4af;">
+        
+                              <th >First Round [XX]</th>
+                              <th >Second Round [XX]</th>
+        
+                          </thead>  
+                            <tr>
+                              
+                              <td>XX.XX</td>
+                              <td>XX:XX</td>
+                              
+                            </tr>
+                            
+        
+                          </tbody>
+        
+                    <%}%>
+                      </table>
+                      <table class="table table-bordered border border-dark">
+                        <h4>Meghalaya Afternoon Result</h4>
+                        <%if(currentUser){%>
+                            <%if(currentUser.role.includes('admin')){%>
+                               
+                                <a class="btn btn-sm mb-2  btn-success" href="/noonresult/addnoonresult">Add  Noon Result</a>
+                            
+                                <%}%>
+                                    <%}%>
+                                    <%if(noonresult.length>0){%>
+                   <%noonresult.forEach((data)=>{%>
+
+                  
+                        <tbody>
+                          <thead style="background-color: #99e4af;">
+      
+                            <th >First Round [<%=data.round1.time%>]</th>
+                            <th >Second Round [<%=data.round2.time%>]</th>
+                        
+                            
+                            <%if(currentUser){%>
+                                <%if(currentUser.role.includes('admin')){%>
+                            <th>Action</th>
+                <%}%>
+                    <%}%>
+      
+                        </thead>  
+                          <tr>
+                            
+                            <td><%=data.round1.result%></td>
+                            <td><%=data.round2.result%></td>
+                             <%if(currentUser){%>
+                                <%if(currentUser.role.includes('admin')){%>
+                                    <td>
+                                <form action="/noonresult/<%=data._id %>/delete?_method=DELETE" method="POST">
+                                    <button class="btn btn-sm  btn-dark text-center bg-white text-dark mb-3" class="">Delete
+                                    </button>
+                                </form>
+                            </td>
+                            <%}%>
+                                <%}%>
+                            
+                          </tr>
+                         
+      
+                        </tbody>
+                    <%})%>
+                    <%}else{%>
+                        <tbody>
+                            <thead style="background-color: #99e4af;">
+        
+                              <th >First Round [XX]</th>
+                              <th >Second Round [XX]</th>
+        
+                          </thead>  
+                            <tr>
+                              
+                              <td>XX.XX</td>
+                              <td>XX:XX</td>
+                              
+                            </tr>
+                            
+        
+                          </tbody>
+        
+                    <%}%>
+                      </table>
+                      <table class="table table-bordered border border-dark">
+                        <h4>Meghalaya Evening Result</h4>
+                        <%if(currentUser){%>
+                            <%if(currentUser.role.includes('admin')){%>
+                               
+                                <a class="btn btn-sm mb-2  btn-success" href="/eveningresult/addeveningresult">Add  Evening Result</a>
+                            
+                                <%}%>
+                                    <%}%>
+                                    <%if(eveningresult.length>0){%>
+                   <%eveningresult.forEach((data)=>{%>
+
+                  
+                        <tbody>
+                          <thead style="background-color: #99e4af;">
+      
+                            <th >First Round [<%=data.round1.time%>]</th>
+                            <th >Second Round [<%=data.round2.time%>]</th>
+                        
+                            
+                            <%if(currentUser){%>
+                                <%if(currentUser.role.includes('admin')){%>
+                            <th>Action</th>
+                <%}%>
+                    <%}%>
+      
+                        </thead>  
+                          <tr>
+                            
+                            <td><%=data.round1.result%></td>
+                            <td><%=data.round2.result%></td>
+                             <%if(currentUser){%>
+                                <%if(currentUser.role.includes('admin')){%>
+                                    <td>
+                                <form action="/eveningresult/<%=data._id %>/delete?_method=DELETE" method="POST">
+                                    <button class="btn btn-sm  btn-dark text-center bg-white text-dark mb-3" class="">Delete
+                                    </button>
+                                </form>
+                            </td>
+                            <%}%>
+                                <%}%>
+                            
+                          </tr>
+                        </tbody>
+                    <%})%>
+                <%}else{%>
+                    <tbody>
+                        <thead style="background-color: #99e4af;">
+    
+                          <th >First Round [XX]</th>
+                          <th >Second Round [XX]</th>
+    
+                      </thead>  
+                        <tr>
+                          
+                          <td>XX.XX</td>
+                          <td>XX:XX</td>
+                          
+                        </tr>
+                        
+    
+                      </tbody>
+    
+                <%}%>
+                      </table>
+                     
+                     
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <main class="grid">
+        <article>
+            <a href="/commonnumbermorninground1">
+          <img src="images/commonmorning.jpg" alt="Sample photo" >
+        </a>
+        </article>
+        <article>
+            <a href="/commonnumberround1">
+          <img src="images/commonnoon.jpg" alt="Sample photo">
+        </a>
+        </article>
+        <article>
+            <a href="/commonnumbernightround1" >
+          <img src="images/commonevening.jpg" alt="Sample photo">
+        </a>
+        </article>
+        <article>
+            <a href="/analytics">
+          <img src="images/analytics.jpg" alt="Sample photo">
+        </a>
+        </article>
+        <article>
+            <a href="/teercalender">
+          <img src="images/teercalendar.jpg" alt="Sample photo">
+        </a>
+        </article>
+        <article>
+            <a href="/previousresult">
+          <img src="images/previousresults.jpg" alt="Sample photo">
+        </a>
+        </article>
+        <article>
+            <a href="/dreamnumber">
+          <img src="images/dreamnumber.jpg" alt="Sample photo">
+        </a>
+        </article>
+        <article>
+            <a href="./reputedcounter">
+          <img src="images/reputedcounter.jpg" alt="Sample photo">
+        </a>
+        </article>
+        <article>
+            <a href="/teerchampion">
+          <img src="images/champions.jpg" alt="Sample photo">
+        </a>
+        </article>
+      </main>
+    </div>
+    
+    </main>
+    
+    
+
+</main>
+<%- include("./partials/footer") %>

@@ -1,0 +1,66 @@
+
+<%- include("../partials/header") %>
+<main>
+
+    <section class="py-5 text-center container">
+
+        <img src="./images/teerchampbanner.jpg" class="img-fluid" alt="...">
+        <div class="p-4"></div>
+    </section>
+
+    <div class="album py-5 bg-light">
+   
+        
+        <div class="container">
+<%if(currentUser){%>
+    <%if(currentUser.role.includes('admin')){%>
+        <div class="btn-group mb-3">
+            <a type="button" href="/teerchampion/addteerchampion" class="btn btn-sm  btn-dark">Add Teer Champion</a>
+        </div>
+        <%}%>
+            <%}%>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                
+                <%teerchampion.forEach((data)=>{%>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="./images/teeravatar.jpg" class="bd-placeholder-img card-img-top" width="100%"
+                            height="225" alt="..." class="img-thumbnail">
+
+                        <div class="card-body">
+
+
+                            <h5 class="card-title text-center"><%=data.name%></h5>
+                            <p class="card-text text-center"><%=data.year%> Teer Champion</p>
+                            <%if(currentUser){%>
+                                <%if(currentUser.role.includes('admin')){%>
+                                    <p class="card-text text-center"></p>
+                                    <form style="text-align: center;"
+                                        action="/teerchampion/<%=data._id %>/delete?_method=DELETE" method="POST">
+                                        <button class="btn  btn-dark text-white text-center">Delete Teer Champion</button>
+                                    </form>
+                                    </p>
+                                    <%}%>
+                                        <%}%>
+                        </div>
+                    </div>
+                </div>
+                <%})%>
+              
+              
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+
+
+    </section>
+
+
+</main>
+<%- include("../partials/footer") %>

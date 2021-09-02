@@ -1,0 +1,42 @@
+<%- include("../partials/header") %>
+<main>
+
+    <section class="py-5 text-center container">
+
+        <img src="./images/faqbanner.jpg" class="img-fluid" alt="...">
+        <div class="p-4"></div>
+        <%if(currentUser){%>
+            <%if(currentUser.role.includes('admin')){%>
+        <div class="btn-group mb-3">
+            <a type="button" href="/faq/addfaq" class="btn btn-sm  btn-dark">Add FAQ</a>
+        </div>
+        <%}%>
+            <%}%>
+        <div class="row no-gutters">
+           <%faq.forEach((faq)=>{%>
+            <div class="card text-white bg-dark mb-3">
+                <h5 class="card-header"><%=faq.qustion%></h5>
+                <div class="card-body">
+
+                    <p class="card-text"><%=faq.answer%></p>
+
+                </div>
+                
+                
+                <%if(currentUser){%>
+                    <%if(currentUser.role.includes('admin')){%>
+                    <form action="/faq/<%=faq._id %>/delete?_method=DELETE" method="POST">
+                        <button class="btn btn-sm  btn-dark text-center bg-white text-dark mb-3" class="">Delete</button>
+                    </form>
+                    <%}%>
+                        <%}%>
+                
+            </div>
+<%})%>
+          
+        </div>
+
+    </section>
+</main>
+
+<%- include("../partials/footer") %>

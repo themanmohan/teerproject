@@ -1,0 +1,121 @@
+
+    <!doctype html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Hugo 0.84.0">
+        <title>Meghalaya Sunday Teer</title>
+        <link rel="icon" href="../images/favicon.png" type="image/gif" sizes="16x16">
+        <link href="../../bootstrap.min.css" rel="stylesheet">
+    
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+            }
+    
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+    
+    
+    </head>
+    
+    <body>
+    
+        <header>
+            <div class="collapse bg-dark" id="navbarHeader">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-7 py-4">
+                            <h4 class="text-white">About Meghalaya Sunday Teer</h4>
+                            <p class="text-muted">Meghalaya Sunday Teer , a curious phenomenon that blends archery and the
+                                interpretation of dreams. 4:00 arrives and the archers begin to fire arrows. They are
+                                absolute machines and incredibly accurate.</p>
+                        </div>
+                        <div class="col-sm-4 offset-md-1 py-4">
+                            <h4 class="text-white">Contact us</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="text-white">Like us on Facebook</a></li>
+    
+                                <li><a href="#" class="text-white">Email us</a></li>
+                                <%if(!currentUser){%>
+                                    <li><a href="/users/login" class="text-white">Login </a></li>
+                                    <%} else{%>
+                                        <li><a href="/users/logout" class="text-white">Logout </a></li>
+                                        <%}%>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar navbar-dark bg-dark shadow-sm">
+                <div class="container">
+                    <a href="/" class="navbar-brand d-flex align-items-center">
+                        <img src="../../images/teerlogo.png" class="nav-brand" width="85px" height="60px" alt="Assam Teer">
+                        <strong class="nav-brand align-items-center">Meghalaya Sunday Teer</strong>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                        aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+    
+        <main>
+    
+            <section class="py-5 col-md-3  container">
+                <div class="row no-gutters">
+    
+                <form action="/users/register" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="name" id="name" name="name" class="form-control" placeholder="Enter Name"
+                            value="<%= typeof name != 'undefined' ? name : '' %>" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email"
+                            value="<%= typeof email != 'undefined' ? email : '' %>" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Create Password"
+                            value="<%= typeof password != 'undefined' ? password : '' %>" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password2">Confirm Password</label>
+                        <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirm Password"
+                            value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+                    </div>
+                    <button type="submit" class="login-button btn btn-success mt-3">
+                        Register
+                    </button>
+                </form>
+                </div>
+            </section>
+        </main>
+        <footer class="text-muted py-5">
+            <div class="container">
+                <p class="float-end mb-1">
+                   
+                </p>
+                <p class="mb-1">Meghalaya Sunday Teer Copyright &copy; 2016 All rights reserved.</p>
+    
+            </div>
+        </footer>
+        <script src="../../bootstrap.bundle.min.js"></script>
+    </body>
+    
+    </html>

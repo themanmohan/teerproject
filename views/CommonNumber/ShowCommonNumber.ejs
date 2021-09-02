@@ -1,0 +1,134 @@
+
+<%- include("../partials/header") %>
+<main>
+
+   <section class="py-5 text-center container">
+
+      <img src="./images/noonbanner.jpg" class="img-fluid" alt="...">
+      <div class="p-4"></div>
+      
+      <div class="row no-gutters">
+      <h2 >
+         <%if(round1.length>0){%>
+            
+Common Number For<br />
+<%=round1[0].Date%>
+</h2>
+         <%}%>
+         
+      <%if(currentUser){%>
+         <%if(currentUser.role.includes('admin')){%>
+            
+               <a href="/commonnumberround1/addround1" type="button" 
+                  class="mb-3 btn btn-dark ">Add for Round 1</a>
+            
+            
+            <%}%>
+               <%}%>
+         <table class="table table-bordered border border-dark">
+            <h5 >Meghalaya Sunday Teer - Afternoon Round 1</h5>
+            <tbody>
+               <thead style="background-color: #99e4af;">
+
+                  <th>Direct</th>
+                  <th>House</th>
+                  <th>Ending</th>
+                  <%if(currentUser){%>
+                     <%if(currentUser.role.includes('admin')){%>
+                  <th>Action</th>
+               <%}%>
+                  <%}%>
+                 
+
+               </thead>
+               <%round1.forEach((data)=>{%>
+
+                  <tr>
+
+                     <td>
+                        <%=data.Direct%>
+                     </td>
+                     <td>
+                        <%=data.House%>
+                     </td>
+                     <td>
+                        <%=data.Ending%>
+                     </td>
+                     <%if(currentUser){%>
+                        <%if(currentUser.role.includes('admin')){%>
+                     <td>
+                     <form action="/commonnumberround1/<%=data._id %>/delete?_method=DELETE" method="POST">
+                        <button class="btn btn-sm  btn-dark text-center bg-white text-dark mb-3" class="">Delete</button>
+                     </form>
+                     <%}%>
+                        <%}%>
+                     </td>
+
+
+                  </tr>
+                  <%})%>
+            </tbody>
+         </table>
+      </div>
+      <%if(currentUser){%>
+         <%if(currentUser.role.includes('admin')){%>
+      <a href="/commonnumberround2/addround2" type="button" class="btn btn-sm mb-3  btn-dark">Add for Round 2</a>
+      <%}%>
+         <%}%>
+      <div class="row no-gutters">
+      
+         <table class="table table-bordered border border-dark">
+            <h5 >Meghalaya Sunday Teer - Afternoon Round 2</h5>
+            <tbody>
+               <thead style="background-color: #99e4af;">
+      
+                  <th>Direct</th>
+                  <th>House</th>
+                  <th>Ending</th>
+                  <%if(currentUser){%>
+                     <%if(currentUser.role.includes('admin')){%>
+                  <th>Action</th>
+      <%}%>
+         <%}%>
+      
+      
+               </thead>
+               <%round2.forEach((data)=>{%>
+      
+                  <tr>
+      
+                     <td>
+                        <%=data.Direct%>
+                     </td>
+                     <td>
+                        <%=data.House%>
+                     </td>
+                     <td>
+                        <%=data.Ending%>
+                     </td>
+                     <%if(currentUser){%>
+                        <%if(currentUser.role.includes('admin')){%>
+                     <td>
+                        <form action="/commonnumberround2/<%=data._id %>/delete?_method=DELETE" method="POST">
+                           <button class="btn btn-sm  btn-dark text-center bg-white text-dark mb-3" class="">Delete</button>
+                        </form>
+                     </td>
+      <%}%>
+         <%}%>
+      
+                  </tr>
+                  <%})%>
+            </tbody>
+         </table>
+      </div>
+      </div>
+
+      </div>
+      </div>
+
+      </div>
+   </section>
+
+
+</main>
+<%- include("../partials/footer") %>

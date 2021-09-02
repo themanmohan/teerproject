@@ -1,0 +1,47 @@
+
+<%- include("../partials/header") %>
+    <main>
+        <section class="py-5 text-center container">
+            <img src="./images/analyticsbanner.jpg" class="img-fluid" alt="...">
+            <div class="p-4"></div>
+        </section>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                                        <div class="col">
+                                            <div class="card shadow-sm">
+                                                <img src="./images/teeravatar.jpg"
+                                                    class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                                    alt="..." class="img-thumbnail">
+
+                                                <div class="card-body">
+
+                                                    <%teerchampion.slice(0,2).forEach((data)=>{%>
+                                                    <h5 class="card-title text-center">
+                                                    <%=data.year%>:  <%=data.name%>
+                                                    </h5>
+                                                    <%})%>
+                                                   
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+
+
+                                </div>
+            </div>
+        </div>
+
+        </div>
+
+
+
+
+
+
+        </section>
+
+
+    </main>
+    <%- include("../partials/footer") %>
